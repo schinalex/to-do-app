@@ -6,7 +6,7 @@
     </div>
     <div class="column">
       <div calss="title">
-        <div v-show="!editing">{{task.title}}</div>
+        <div id="task-title" v-show="!editing">{{task.title}}</div>
         <input
           ref="edit"
           type="text"
@@ -38,15 +38,15 @@ export default {
     editing: false
   }),
   methods: {
-    deleteTask (index) {
-      this.$emit('taskDeleted', index)
+    deleteTask(index) {
+      this.$emit("taskDeleted", index);
     },
-    edit () {
-      this.editing = !this.editing
-      this.$nextTick(() => this.$refs.edit.focus())
+    edit() {
+      this.editing = !this.editing;
+      this.$nextTick(() => this.$refs.edit.focus());
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -61,11 +61,13 @@ export default {
   height: 21px;
   line-height: 21px;
 }
-input, input:focus {
+input,
+input:focus {
   border: none;
   outline: none;
 }
-.button, button:focus {
+.button,
+button:focus {
   height: 15px;
   width: 35px;
   line-height: 12px;
@@ -74,7 +76,7 @@ input, input:focus {
   border: none;
   background-color: white;
   outline: none;
-  padding:0;
-  margin:0;
+  padding: 0;
+  margin: 0;
 }
 </style>

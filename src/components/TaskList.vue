@@ -18,54 +18,54 @@
 </template>
 
 <script>
-import AddTask from './AddTask'
-import Task from './Task'
-import StatusBar from './StatusBar'
-import { getTasks } from '../utils/helpers'
+import AddTask from "./AddTask";
+import Task from "./Task";
+import StatusBar from "./StatusBar";
+import { getTasks } from "../utils/helpers";
 
 export default {
   components: {
-    'add-task': AddTask,
-    'to-do-task': Task,
-    'status-bar': StatusBar
+    "add-task": AddTask,
+    "to-do-task": Task,
+    "status-bar": StatusBar
   },
   data: () => ({
     tasks: getTasks()
   }),
   watch: {
     tasks: {
-      handler: tasks => localStorage.setItem('tasks', JSON.stringify(tasks)),
+      handler: tasks => localStorage.setItem("tasks", JSON.stringify(tasks)),
       deep: true
     }
   },
   computed: {
-    status () {
-      const total = this.tasks.length
-      const done = this.tasks.filter(task => task.done).length
+    status() {
+      const total = this.tasks.length;
+      const done = this.tasks.filter(task => task.done).length;
       return {
         total,
         done,
         todo: total - done
-      }
+      };
     }
   },
   methods: {
-    addTask (task) {
-      this.tasks.unshift(task)
+    addTask(task) {
+      this.tasks.unshift(task);
     },
-    deleteTask (index) {
-      this.tasks.splice(index, 1)
+    deleteTask(index) {
+      this.tasks.splice(index, 1);
     },
-    deleteDone () {
-      this.tasks = this.tasks.filter(task => !task.done)
+    deleteDone() {
+      this.tasks = this.tasks.filter(task => !task.done);
     }
   }
-}
+};
 </script>
 
 <style scoped>
 .tasks {
-  max-height: 370px;
+  height: 370px;
   overflow: auto;
 }
 </style>

@@ -1,12 +1,10 @@
 <template>
   <div class="header column">
     <div class="row">
-      <div class="date">
-        {{today.date}}
-      </div>
+      <div class="date" id="date">{{today.date.toString().padStart(2, 0)}}</div>
       <div>
-        {{today.month}}<br>
-        {{today.year}}
+        <span id="month">{{today.month}}</span><br>
+        <span id="year">{{today.year}}</span>
       </div>
     </div>
     <div class="title">Tasks</div>
@@ -14,15 +12,15 @@
 </template>
 
 <script>
-import { getDate } from '../utils/helpers.js'
+import { getDate } from "../utils/helpers.js";
 
 export default {
-  data () {
+  data() {
     return {
       today: getDate()
-    }
+    };
   }
-}
+};
 </script>
 
 <style scoped>
@@ -42,7 +40,8 @@ export default {
 .title {
   font-size: 50px;
 }
-.row, .title {
+.row,
+.title {
   margin-left: 20px;
   color: white;
 }

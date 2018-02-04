@@ -1,6 +1,6 @@
 <template>
   <div class="status row">
-    <div><span class="bold">{{status.total}} Tasks</span> ({{status.todo}} left / {{status.done}} done)</div>
+    <div id="status"><span class="bold" id="total">{{status.total}} Tasks</span> ({{status.todo}} left / {{status.done}} done)</div>
     <button @click="clearDone()">Clear Done</button>
   </div>
 </template>
@@ -11,11 +11,11 @@ export default {
     status: Object
   },
   methods: {
-    clearDone () {
-      this.$emit('clearDone')
+    clearDone() {
+      this.$emit("clearDone");
     }
   }
-}
+};
 </script>
 
 <style scoped>

@@ -3,6 +3,7 @@
     <img class="icon" src="../assets/add.svg" alt="add" v-show="!adding">
     <img class="icon" src="../assets/todo.svg" alt="todo" v-show="adding">
     <input
+      id="new-task-title"
       ref="title"
       type="text"
       placeholder="Add new Task"
@@ -10,31 +11,31 @@
       @keyup.enter="addTask(title)"
       @focus="adding = true"
       @blur="adding = false">
-    <button @click="addTask(title)">Add Task</button>
+    <button id="add-task" @click="addTask(title)">Add Task</button>
   </div>
 </template>
 
 <script>
 export default {
   data: () => ({
-    title: '',
+    title: "",
     adding: false
   }),
   methods: {
-    addTask (title) {
+    addTask(title) {
       if (title) {
         const task = {
           title,
           done: false
-        }
-        this.$emit('taskAdded', task)
-        this.title = ''
+        };
+        this.$emit("taskAdded", task);
+        this.title = "";
       } else {
-        this.$refs.title.focus()
+        this.$refs.title.focus();
       }
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -50,7 +51,8 @@ input {
   height: 35px;
   width: 35px;
 }
-button, input {
+button,
+input {
   border: none;
   background-color: white;
   outline: none;
